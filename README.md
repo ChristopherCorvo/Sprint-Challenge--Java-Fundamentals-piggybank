@@ -24,7 +24,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how you took advantage of Java's Object Oriented approach to solve the sprint challenge.
 
-Answer:
+Answer: Java by default is an OOP language so in this sprint for example we have a Model, we have a controller etc. Inside these files are classes, methods etc but if you take a step back you can see that are representitive of things that have to work together. Honestly not the best answer. 
 
 2. Explain the three steps needed to run a Java application (using the JDK) including what each step does and how those step correlate to running a JavaScript application.
 
@@ -40,7 +40,10 @@ to make my value field a long data type. When I went to get total value of all o
 
 4. Can you explain the differences between Abstract Classes and Interfaces including how they are used in your application?
 
-Answer:
+Answer: There are a variety of differences between Abstract Classes and Interfaces:
+        1. In an interface you delcare variables but do not give them logic that is left for the class itself. Abstract classes can have variables and methods that have been fully fleshed out. The beuty of an interface is that 5 different classes can utilize it in 5 different ways.
+        2. Interfaces can only extend other interfaces where as an abstract class can extend other classes.
+        3. A java class can utilized multiple interfaces at once where as with an abstract class they can only use one. 
 
 ## Instructions
 
