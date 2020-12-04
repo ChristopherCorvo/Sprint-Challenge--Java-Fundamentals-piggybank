@@ -2,7 +2,7 @@ package com.lambdaschool.piggybank.models;
 // ------ Auto Imports ------
 import javax.persistence.*;
 
-//coinid, name, nameplural, value, quantity
+
 
 @Entity
 @Table(name = "coins")
@@ -12,10 +12,11 @@ public class Coin
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     // ----- Table Fields -----
+    // Fields taken from data.sql = coinid, name, nameplural, value, quantity
     private long coinid;
     private String name;
     private String nameplural;
-    private long value;
+    private double value;
     private int quantity;
 
     // Constructor #1
@@ -29,7 +30,7 @@ public class Coin
         long coinid,
         String name,
         String nameplural,
-        long value,
+        double value,
         int quantity)
     {
         this.coinid = coinid;
@@ -71,12 +72,12 @@ public class Coin
         this.nameplural = nameplural;
     }
 
-    public long getValue()
+    public double getValue()
     {
         return value;
     }
 
-    public void setValue(long value)
+    public void setValue(double value)
     {
         this.value = value;
     }
@@ -92,7 +93,6 @@ public class Coin
     }
 
     // This determines the format of the returned information
-    //coinid, name, nameplural, value, quantity
     @Override
     public String toString()
     {
