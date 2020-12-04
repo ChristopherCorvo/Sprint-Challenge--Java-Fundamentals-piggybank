@@ -23,9 +23,24 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how you took advantage of Java's Object Oriented approach to solve the sprint challenge.
+
+Answer:
+
 2. Explain the three steps needed to run a Java application (using the JDK) including what each step does and how those step correlate to running a JavaScript application.
-3. Explain how Java being a strongly typed language affected you solution.
+
+Answer: In order to run a java app using the JDK we need to go through three steps:
+          - 1: Compile the program from source code to byte code so that your program can be executed in the Java Virtual Machine. Using command line or terminal navigate to the SRC file of the program and type: javac packagename/*.java.
+          - 2: The above step creates a variety of *.class files so in this step we archive the many *.class files into a .jar file for easier distribution. Again in command line or terminal type the sytax --> jar cvfe chosenNameOfJarFile.jar package.directory package/*.class
+          -3 Execute program ---> in terminal navigate to SRC file and type java -jar chosenNameOfJarFile.jar and then your program will run. 
+
+3. Explain how Java being a strongly typed language affected your solution.
+
+Answer: This is a great question becuase when building my Java Model for the data I orginally chose
+to make my value field a long data type. When I went to get total value of all of the coins I was getting the wrong calculation. I was expecting 7.3 and I was getting as a result 6.5. When I went back and switched the total field from Long to double I then got the correct result. The lesson is that your choice of data type is extremely important. This server is working with money values, you cant afford to make mistakes in this situation. 
+
 4. Can you explain the differences between Abstract Classes and Interfaces including how they are used in your application?
+
+Answer:
 
 ## Instructions
 
