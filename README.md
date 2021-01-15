@@ -24,13 +24,20 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how you took advantage of Java's Object Oriented approach to solve the sprint challenge.
 
-Answer: Java by default is an OOP language so in this sprint for example we have a Model, we have a controller etc. Inside these files are classes, methods etc but if you take a step back you can see that are representitive of things that have to work together. Honestly not the best answer. 
-
+Answer: Java by default is an OOP language so in this sprint for example we have a controller package that has classes that govern what endpoints exist and how a user can interact with the backend. In a controller you'll see at the top of the class @Autowired and then beneath that a repository name. In this example what is happening is Spring is creating an instance of the repository class. By creating an instance(object) of the repo class we are now able to interact with the repository and what ever methods might be stored there. I can not change or modify the business logic of the repository class I can only interact with its contents by creating an instance of that class. This is an example of encapsulation. Encapsulation is a key characteristic of OOP. In this example the business logic of the repo class is protected. 
+ 
 2. Explain the three steps needed to run a Java application (using the JDK) including what each step does and how those step correlate to running a JavaScript application.
 
 Answer: In order to run a java app using the JDK we need to go through three steps:
-          - 1: Compile the program from source code to byte code so that your program can be executed in the Java Virtual Machine. Using command line or terminal navigate to the SRC file of the program and type: javac packagename/*.java.
-          - 2: The above step creates a variety of *.class files so in this step we archive the many *.class files into a .jar file for easier distribution. Again in command line or terminal type the sytax --> jar cvfe chosenNameOfJarFile.jar package.directory package/*.class
+          - 1: Compile the program from source code to byte code so that your program can be executed in the Java Virtual Machine. 
+          
+          Using command line or terminal navigate to the SRC file of the program and type: 
+          'javac packagename/*.java.'
+
+          - 2: The above step creates a variety of *.class files so in this step we archive the many *.class files into a .jar file for easier distribution.
+          
+           Again in command line or terminal type the sytax --> jar cvfe chosenNameOfJarFile.jar package.directory package/*.class
+           
           -3 Execute program ---> in terminal navigate to SRC file and type java -jar chosenNameOfJarFile.jar and then your program will run. 
 
 3. Explain how Java being a strongly typed language affected your solution.
@@ -41,9 +48,12 @@ to make my value field a long data type. When I went to get total value of all o
 4. Can you explain the differences between Abstract Classes and Interfaces including how they are used in your application?
 
 Answer: There are a variety of differences between Abstract Classes and Interfaces:
-        1. In an interface you delcare variables but do not give them logic that is left for the class itself. Abstract classes can have variables and methods that have been fully fleshed out. The beuty of an interface is that 5 different classes can utilize it in 5 different ways.
-        2. Interfaces can only extend other interfaces where as an abstract class can extend other classes.
-        3. A java class can utilized multiple interfaces at once where as with an abstract class they can only use one. 
+        1. In an interface you delcare method name headers. The class that implements the interface will add the business logic to the method headers. What is cool about this is that multiple classes can implement the same interfae but in an endless variety of ways. You must use every method in the interface. This is an example of polymorphism. 
+        
+        Abstract classes on the other hand can have variables, methods with business logic and also abstract methods you can implement in a similar fashion to the method headers in an interface.
+
+        2. A java class can utilized multiple interfaces at once. On the other hand a class can only extend one abstract class.
+ 
 
 ## Instructions
 

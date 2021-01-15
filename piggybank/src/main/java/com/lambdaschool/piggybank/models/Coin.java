@@ -9,38 +9,38 @@ import javax.persistence.*;
 
 public class Coin
 {
+    // ----- Table Fields -----
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    // ----- Table Fields -----
-    // Fields taken from data.sql = coinid, name, nameplural, value, quantity
-    private long coinid;
+    private long coinid; // primary key
+
     private String name;
     private String nameplural;
     private double value;
     private int quantity;
 
-    // Constructor #1
+    // ------- Constructor --------------
     public Coin()
     {
         // Default constructor = required for spring data JPA
     }
 
     // Constructor #2 w/ parameters
+
     public Coin(
-        long coinid,
         String name,
         String nameplural,
         double value,
         int quantity)
     {
-        this.coinid = coinid;
         this.name = name;
         this.nameplural = nameplural;
         this.value = value;
         this.quantity = quantity;
     }
 
-    // Getters and Setters
+
+    // ------------- Getters and Setters -------------
 
     public long getCoinid()
     {
