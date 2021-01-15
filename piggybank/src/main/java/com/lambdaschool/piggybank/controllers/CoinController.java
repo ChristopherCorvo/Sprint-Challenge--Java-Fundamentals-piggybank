@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController // tells Spring that there will be endpoints
@@ -71,45 +72,72 @@ public class CoinController
     // Stretch:
     // http://localhost:2019/money/{amount}
 
-//    @GetMapping(value = "/money/{amount}", produces = "application/json")
-//    public ResponseEntity<?> removeCoins(@PathVariable double amount)
-//    {
-//        List<Coin> myList = new ArrayList<>();
-//        coinrepo.findAll().iterator().forEachRemaining(myList::add);
-//
-//
-//        double total = 0.0;
-//        double amountTotal = amount;
-//        for(Coin c : myList)
-//        {
-//            total = total + (c.getQuantity() * c.getValue());
-////            System.out.println(total);
-//        }
-//
-//        if(total < amountTotal)
-//        {
-//            System.out.println("Not enough funds in piggy bank for this transaction.");
-//        }
-//        else
-//        {
-//             for(Coin c : myList)
-//             {
-//               if(amountTotal >= c.getValue())
-//               {
-//                   // System.out.println(amount = amount - (c.getQuantity()*c.getValue()));
-//                   System.out.println(c.getValue());
-//                   amountTotal = amountTotal - c.getValue();
-//                   System.out.println(amountTotal);
-//               }
-//               else if(amountTotal <= 0.0)
-//               {
-//                   System.out.println(amount);
-//               }
-//
-//             }
-//        }
-//
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @GetMapping(value = "/money/{amount}", produces = "application/json")
+    public ResponseEntity<?> removeCoins(@PathVariable double amount)
+    {
+        // This is creating an Array List of coins
+        List<Coin> myList = new ArrayList<>();
+        coinrepo.findAll().iterator().forEachRemaining(myList::add);
+        // problem is that when it sorts it is putting 10 pennies before 3 nickles
+        myList.sort((c1, c2) -> (c1.getQuantity() + c2.getQuantity()));
+
+        // For loop derives total value of myList
+        double total = 0.0;
+        for(Coin c : myList)
+        {
+            total = total + (c.getQuantity() * c.getValue());
+
+        }
+        System.out.println("Line 89 ------------> " + total); // will be total in piggy bank
+
+        // Below this line is logic to substract from total and myList via amount
+        double amountTotal = amount;
+        // Check to see that there is enough money to make a withdrawal
+        if(total < amountTotal)
+        {
+            System.out.println("Not enough funds in piggy bank for this transaction.");
+        }
+        else
+        {
+             for(Coin c : myList)
+             {
+               if(amountTotal >= c.getValue() * c.getQuantity())
+               {
+                   amountTotal = amountTotal - (c.getValue() * c.getQuantity());
+                  // System.out.println("Line 105 --------> " + String.format("%.2f",amountTotal));
+                   System.out.println(c.getValue());
+                   c.setQuantity(0);
+               }
+               else
+               {
+                   continue;
+               }
+
+             }
+        }
+
+        for(Coin c : myList)
+        {
+            // Find total value of every coin summed together
+            // getQuantity() * getName()
+            if(c.getQuantity() == 1)
+            {
+                System.out.println(c.getQuantity() + " " + c.getName());
+
+            }
+            else if(c.getQuantity() > 1)
+            {
+                System.out.println(c.getQuantity() + " " + c.getNameplural());
+            }
+            else
+            {
+                continue;
+            }
+        }
+
+        System.out.println("The piggy bank holds $" + (total - amount));
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }
