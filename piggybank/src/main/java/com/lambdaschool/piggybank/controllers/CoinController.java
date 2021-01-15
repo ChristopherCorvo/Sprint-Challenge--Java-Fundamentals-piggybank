@@ -59,7 +59,7 @@ public class CoinController
                 System.out.println(c.getQuantity() + " " + c.getNameplural());
             }
         }
-
+        // Test Comment
         double total = 0.0;
         for(Coin c : myList)
         {
